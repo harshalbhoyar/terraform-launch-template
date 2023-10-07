@@ -16,7 +16,29 @@ provider "aws" {
 
 
 resource "aws_instance" "test-instance" {
-  ami           = var.ami
-  instance_type = var.instance_type
-  key_name      = var.key_pair
+  ami             = var.ami
+  instance_type   = var.instance_type
+  key_name        = var.key_pair
+  security_groups = [aws_security_group.terraform-security-group.name]
+}
+
+
+resource "aws_security_group" "terraform-security-group" {
+  name = "terraform-security-group"
+
+  #Incoming traffic
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] #replace it with your ip address
+  }
+
+  #Outgoing traffic
+  egress {
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
