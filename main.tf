@@ -20,6 +20,10 @@ resource "aws_instance" "test-instance" {
   instance_type   = var.instance_type
   key_name        = var.key_pair
   security_groups = [aws_security_group.terraform-security-group.name]
+
+  tags = {
+    Name = "terraform-ec2"
+  }
 }
 
 
@@ -41,4 +45,9 @@ resource "aws_security_group" "terraform-security-group" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = {
+    Name = "terraform-security-group"
+  }
+
 }
