@@ -5,16 +5,16 @@ variable "network_interface_id" {
 
 variable "ami" {
   type = string
-  # default = "ami-053b0d53c279acc90"
+  default = "ami-053b0d53c279acc90"
 }
 
 variable "instance_type" {
   type = string
-  # default = "t2.micro"
+  default = "t2.micro"
 }
 
 variable "key_pair" {
   description = "ssh key"
-  # default     = "terraform"
+  default     = "terraform"
 }
 
