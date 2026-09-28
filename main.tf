@@ -9,7 +9,7 @@ terraform {
 
 provider "aws" {
   # Specifies the desired AWS region for resource provisioning
-  region = "us-east-1"
+  region = "ap-south-1"
 }
 
 
